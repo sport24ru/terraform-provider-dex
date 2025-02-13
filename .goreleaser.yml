@@ -21,7 +21,7 @@ builds:
         goarch: '386'
     binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
-  - format: zip
+  - formats: [ 'zip' ]
     name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
@@ -30,7 +30,7 @@ signs:
   - artifacts: checksum
     args:
       - "--local-user"
-      - "A17BA510E9BD6100D6E6532C2FB63D48D5AB04AE" # Replace this with your GPG signing key ID
+      - "{{ .Env.GPG_FINGERPRINT }}"
       - "--output"
       - "${signature}"
       - "--detach-sign"
