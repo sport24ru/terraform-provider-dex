@@ -1,6 +1,6 @@
 module gitlab.com/sport24ru/terraform-provider-dex
 
-go 1.19
+go 1.21
 
 require (
 	github.com/golang/protobuf v1.5.2
